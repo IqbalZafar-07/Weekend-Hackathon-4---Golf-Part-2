@@ -6,16 +6,16 @@ const App = () => {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const [ballPosition,setBallPosition] = useState({
-    left: 0,
-    top: 0,
+    left: "0px",
+    top: "0px",
   });
 
   const handler  = (event)=>{
       // let left1 = ballPosition.left;
       // let top1 = ballPosition.top;
-      let xx = 0, yy = 0;
+      // let xx = 0, yy = 0;
       event.preventDefault();
-      console.log(xx++,yy++);
+      // console.log(xx++,yy++);
       switch(event.keyCode){
         case 39:
           setX(
@@ -39,8 +39,8 @@ const App = () => {
           break;
       }
       setBallPosition({
-            left : x,
-            top : y
+            left : `${x}px`,
+            top : `${y}px`
           });
     };
   //   setBallPosition({
