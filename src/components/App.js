@@ -55,7 +55,11 @@ const App = () => {
     setRenderBall(true);
   };
   const reset = () => {
-    window.location.reload();
+    setBallPosition({
+            left: `0px`,
+            top : `0px`,
+          });
+    setRenderBall(false);
   };
   const renderChoice = () => {
     if(renderBall) {
