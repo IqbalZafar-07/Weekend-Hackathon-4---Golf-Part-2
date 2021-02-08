@@ -11,85 +11,46 @@ const App = () => {
   });
 
   const handler  = (event)=>{
-      // let left1 = ballPosition.left;
-      // let top1 = ballPosition.top;
-      // let xx = 0, yy = 0;
-      event.preventDefault();
-      // console.log(xx++,yy++);
+    let left1 = Number(ballPosition.left.slice(0,-2));
+    let top1 = Number(ballPosition.top.slice(0,-2));
       switch(event.keyCode){
         case 39:
-          setX(
-            (x+5)
-          );
-          break;
-        case 40:
-          setY(
-            (y + 5)
-          );
-          break;
-        case 38:
-          setY(
-            (y - 5)
-          );
-          break;
-        case 37:
-          setX(
-            (x-5)
-          );
-          break;
-      }
-      setBallPosition({
-            left : `${x}px`,
-            top : `${y}px`
+          setBallPosition({
+            left: `${left1 + 5}px`,
+            top : `${top1}px`,
           });
-    };
-  //   setBallPosition({
-  //     left : x,
-  //     top : y
-  //   });
-  // }
-  // } )
-  useEffect(() => {
-    document.addEventListener("keydown", handler); /*=> {
-      // let left1 = ballPosition.left;
-      // let top1 = ballPosition.top;
-      let xx = 0, yy = 0;
-      event.preventDefault();
-      console.log(xx++,yy++);
-      switch(event.keyCode){
-        case 39:
-          setX(
-            (x+5)
-          );
           break;
         case 40:
-          setY(
-            (y + 5)
-          );
+          setBallPosition({
+            left: `${left1}px`,
+            top : `${top1+5}px`,
+          });
           break;
         case 38:
-          setY(
-            (y - 5)
-          );
+          setBallPosition({
+            left: `${left1}px`,
+            top : `${top1-5}px`,
+          });
           break;
         case 37:
-          setX(
-            (x-5)
-          );
-          break;
+          setBallPosition({
+            left: `${left1 - 5}px`,
+            top : `${top1}px`,
+          });
+           break;
+        default:
+           break;
       }
-      return {
-        document.removeEvaentListner("keydown");
-      }
-    });
-    setBallPosition({
-      left : x,
-      top : y
-    });*/
+      console.log(ballPosition.left,ballPosition.top);
+    };
+
+
+  useEffect(() => {
+    window.addEventListener("keydown", handler);
     return () => {
-      document.removeEventListener("keydown", handler);
+      window.removeEventListener("keydown", handler);
     }
-  }, [x,y]);
+  }, [ballPosition]);
   const buttonClickHandler = () => {
     setRenderBall(true);
   };
